@@ -10,10 +10,10 @@ jobs:
     - id: 'query_worksheet'
       uses: jroehl/gsheet.action@release
       with:
-        spreadsheetId: "1PBCsWr9ladI1idcnt83VjEoouIBkyy310P2M6hwIGb0"
+        spreadsheetId: "1TXZIZ_QLGagycLKt4b54FapKHvLmuIj2KHFHK_yOZDk"
         commands: |
           [
-            { "command": "getData", "args": { "range": "'Form Responses'!A:A" } }
+            { "command": "getData", "args": { "range": "'Form Responses'!E:E" } }
           ]
       env:
         GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
