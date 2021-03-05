@@ -33,7 +33,7 @@ jobs:
         [ "$index" = "null" ] && echo "Username not found in list"
         echo "::set-output name=index::$index"
     - name: Add CLA Label and Comment
-      if: steps.username-index.outputs.index != 'null'
+      if: steps.username-index.outputs.index == 'null' && !contains(github.event.pull_request.labels.*.name, 'CLA')
       uses: actions/github-script@v3
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -51,7 +51,7 @@ jobs:
             labels: ['CLA']
           })
     - name: Add CLA-VERIFIED Label
-      if: steps.username-index.outputs.index == 'null'
+      if: steps.username-index.outputs.index != 'null'
       uses: actions/github-script@v3
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -62,8 +62,8 @@ jobs:
             repo: context.repo.repo,
             labels: ['CLA-VERIFIED']
           })
-    - name: REmove CLA Label
-      if: steps.username-index.outputs.index != 'null' && contains(github.event.pull_request.labels.*.name, 'CLA')
+    - name: Remove CLA Label
+      if: steps.username-index.outputs.index == 'null' && contains(github.event.pull_request.labels.*.name, 'CLA')
       uses: actions/github-script@v3
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
