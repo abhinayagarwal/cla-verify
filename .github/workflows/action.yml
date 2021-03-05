@@ -51,7 +51,7 @@ jobs:
             labels: ['CLA']
           })
     - name: Add CLA-VERIFIED Label
-      if: steps.username-index.outputs.index != 'null'
+      if: steps.username-index.outputs.index != 'null' && !contains(github.event.pull_request.labels.*.name, 'CLA-VERIFIED')
       uses: actions/github-script@v3
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -72,5 +72,5 @@ jobs:
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            labels: ['CLA']
+            name: 'CLA'
           })
