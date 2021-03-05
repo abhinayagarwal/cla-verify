@@ -13,7 +13,7 @@ jobs:
         spreadsheetId: "1PBCsWr9ladI1idcnt83VjEoouIBkyy310P2M6hwIGb0"
         commands: |
           [
-            { "command": "getData", "args": { "range": "Sheet2!A:A" } }
+            { "command": "getData", "args": { "range": "'Form Responses'!A:A" } }
           ]
       env:
         GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
