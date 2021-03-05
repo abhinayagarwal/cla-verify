@@ -63,7 +63,7 @@ jobs:
             labels: ['CLA-VERIFIED']
           })
     - name: Remove CLA Label
-      if: steps.username-index.outputs.index == 'null' && contains(github.event.pull_request.labels.*.name, 'CLA')
+      if: steps.username-index.outputs.index != 'null' && contains(github.event.pull_request.labels.*.name, 'CLA')
       uses: actions/github-script@v3
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
