@@ -42,11 +42,7 @@ jobs:
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: 'Hi ${{ github.event.pull_request.user.login }} 👋,
-            
-            Welcome to ControlsFX and thank you for taking time to contribute to this project.
-            
-            We do not recognise you as a contributor. Can you please sign ControlsFX Contributor Agreement: https://cla.controlsfx.org ?'
+            body: 'Hi ${{ github.event.pull_request.user.login }},\n\nWelcome to ControlsFX and thank you for taking time to contribute to this project.\n\nWe do not recognise you as a contributor. Can you please sign ControlsFX Contributor Agreement: https://cla.controlsfx.org ?'
           })
           github.issues.addLabels({
             issue_number: context.issue.number,
